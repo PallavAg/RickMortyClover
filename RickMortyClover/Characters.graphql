@@ -1,0 +1,36 @@
+query getCharacters($page: Int) {
+  characters(page: $page) {
+    
+    info {
+      next
+    }
+    
+    results {
+      id
+      name
+      status
+      species
+      image
+    }
+    
+  }
+}
+
+query getCharacterDetail($id: ID!){
+  character(id: $id) {
+    id
+    name
+    image
+
+    location {
+      id
+      name
+      type
+      dimension
+      residents {
+        id
+      }
+    }
+
+  }
+}

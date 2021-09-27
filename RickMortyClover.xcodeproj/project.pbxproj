@@ -11,6 +11,10 @@
 		7638237E26FFC74B00707E79 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7638237D26FFC74B00707E79 /* ContentView.swift */; };
 		7638238026FFC74C00707E79 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7638237F26FFC74C00707E79 /* Assets.xcassets */; };
 		7638238326FFC74C00707E79 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7638238226FFC74C00707E79 /* Preview Assets.xcassets */; };
+		76805C692700579600999B6F /* Apollo in Frameworks */ = {isa = PBXBuildFile; productRef = 76805C682700579600999B6F /* Apollo */; };
+		76805C6B27005B8200999B6F /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76805C6A27005B8200999B6F /* API.swift */; };
+		76805C6D27005CE500999B6F /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76805C6C27005CE500999B6F /* Network.swift */; };
+		76805C6F270067A900999B6F /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76805C6E270067A900999B6F /* DetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +23,11 @@
 		7638237D26FFC74B00707E79 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		7638237F26FFC74C00707E79 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7638238226FFC74C00707E79 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		7638238A27003B5B00707E79 /* schema.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
+		7638238B27003F4F00707E79 /* Characters.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = Characters.graphql; sourceTree = "<group>"; };
+		76805C6A27005B8200999B6F /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		76805C6C27005CE500999B6F /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		76805C6E270067A900999B6F /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -26,6 +35,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				76805C692700579600999B6F /* Apollo in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -53,6 +63,11 @@
 			children = (
 				7638237B26FFC74B00707E79 /* RickMortyCloverApp.swift */,
 				7638237D26FFC74B00707E79 /* ContentView.swift */,
+				76805C6E270067A900999B6F /* DetailView.swift */,
+				76805C6C27005CE500999B6F /* Network.swift */,
+				76805C6A27005B8200999B6F /* API.swift */,
+				7638238B27003F4F00707E79 /* Characters.graphql */,
+				7638238A27003B5B00707E79 /* schema.json */,
 				7638237F26FFC74C00707E79 /* Assets.xcassets */,
 				7638238126FFC74C00707E79 /* Preview Content */,
 			);
@@ -74,6 +89,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7638238626FFC74C00707E79 /* Build configuration list for PBXNativeTarget "RickMortyClover" */;
 			buildPhases = (
+				7638238D27004C4900707E79 /* Apollo CLI */,
 				7638237426FFC74B00707E79 /* Sources */,
 				7638237526FFC74B00707E79 /* Frameworks */,
 				7638237626FFC74B00707E79 /* Resources */,
@@ -83,6 +99,9 @@
 			dependencies = (
 			);
 			name = RickMortyClover;
+			packageProductDependencies = (
+				76805C682700579600999B6F /* Apollo */,
+			);
 			productName = RickMortyClover;
 			productReference = 7638237826FFC74B00707E79 /* RickMortyClover.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +130,9 @@
 				Base,
 			);
 			mainGroup = 7638236F26FFC74B00707E79;
+			packageReferences = (
+				76805C672700579600999B6F /* XCRemoteSwiftPackageReference "apollo-ios" */,
+			);
 			productRefGroup = 7638237926FFC74B00707E79 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -132,12 +154,36 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		7638238D27004C4900707E79 /* Apollo CLI */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Apollo CLI";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n# Go to the build root and search up the chain to find the Derived Data Path where the source packages are checked out.\nDERIVED_DATA_CANDIDATE=\"${BUILD_ROOT}\"\n\nwhile ! [ -d \"${DERIVED_DATA_CANDIDATE}/SourcePackages\" ]; do\n  if [ \"${DERIVED_DATA_CANDIDATE}\" = / ]; then\n    echo >&2 \"error: Unable to locate SourcePackages directory from BUILD_ROOT: '${BUILD_ROOT}'\"\n    exit 1\n  fi\n\n  DERIVED_DATA_CANDIDATE=\"$(dirname \"${DERIVED_DATA_CANDIDATE}\")\"\ndone\n\n# Grab a reference to the directory where scripts are checked out\nSCRIPT_PATH=\"${DERIVED_DATA_CANDIDATE}/SourcePackages/checkouts/apollo-ios/scripts\"\n\nif [ -z \"${SCRIPT_PATH}\" ]; then\n    echo >&2 \"error: Couldn't find the CLI script in your checked out SPM packages; make sure to add the framework to your project.\"\n    exit 1\nfi\n\ncd \"${SRCROOT}/${TARGET_NAME}\"\n\"${SCRIPT_PATH}\"/run-bundled-codegen.sh codegen:generate --target=swift --includes=./**/*.graphql --localSchemaFile=\"schema.json\" API.swift\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		7638237426FFC74B00707E79 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				7638237E26FFC74B00707E79 /* ContentView.swift in Sources */,
+				76805C6B27005B8200999B6F /* API.swift in Sources */,
+				76805C6D27005CE500999B6F /* Network.swift in Sources */,
+				76805C6F270067A900999B6F /* DetailView.swift in Sources */,
 				7638237C26FFC74B00707E79 /* RickMortyCloverApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -266,6 +312,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"RickMortyClover/Preview Content\"";
@@ -277,7 +324,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -287,7 +334,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -296,6 +343,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"RickMortyClover/Preview Content\"";
@@ -307,7 +355,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -317,7 +365,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -343,6 +391,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		76805C672700579600999B6F /* XCRemoteSwiftPackageReference "apollo-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apollographql/apollo-ios.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.3.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		76805C682700579600999B6F /* Apollo */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 76805C672700579600999B6F /* XCRemoteSwiftPackageReference "apollo-ios" */;
+			productName = Apollo;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 7638237026FFC74B00707E79 /* Project object */;
 }
